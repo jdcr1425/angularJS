@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html ng-app="myfirstapp">
+<head>
+<meta charset="UTF-8">
+<title>hola</title>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+<script type="text/javascript" src="controller.js"></script>
+<link rel="stylesheet" type="text/css" href="all.css">
+</head>
+
+<body ng-controller="firstcontroller">
+
+<input type="text" ng-model="postobj.title">
+<input type="text" ng-model="postobj.body">
+<button ng-click="addpost()">Agregar Comentario</button>
+<table>
+  <tr>
+    <th>Title</th>
+    <th>Body</th> 
+    
+  </tr>
+  <tr ng-repeat = "post in posts">
+    <td>{{post.title}}</td>
+    <td>{{post.body}}</td>
+    
+  </tr>
+    
+</table>
+
+</body>
+</html>
+
+
+
+
+
+<!--<input type="text" ng-model="newcomment.username">
+<input type="text" ng-model="newcomment.comentario">
+<button ng-click="agregarcomentario()">Agregar Comentario</button>
+<h3>Comentarios</h3>
+<ul>
+	<li ng-repeat="comentario in comentarios">
+		
+		{{comentario.comentario}}
+		{{comentario.username}}
+	</li>
+
+</ul>
+{{"hola "+ nombre}}
+-->
+</body>
+
+</html>

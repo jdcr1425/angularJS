@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="datatable">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <link rel="stylesheet" href="//cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css">
+    <script src="//cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+    <script type="text/javascript" src="controller.js"></script>
+    <link rel="stylesheet" href="style.css">
+
+    <script>
+function myFunction() {
+  // Declare variables 
+  var input, filter, table, tr, td, i;
+  input = document.getElementById("myInput");
+  filter = input.value.toUpperCase();
+  table = document.getElementById("myTable");
+  tr = table.getElementsByTagName("tr");
+
+  // Loop through all table rows, and hide those who don't match the search query
+  for (i = 0; i < tr.length; i++) {
+    td = tr[i].getElementsByTagName("td")[1];
+    if (td) {
+      if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
+        tr[i].style.display = "";
+      } else {
+        tr[i].style.display = "none";
+      }
+    } 
+  }
+}
+</script>
+   
+    <title>Document</title>
+</head>
+
+<body ng-controller="controller">
+    
+    <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search">
+    <br/>
+    <table   id="myTable" class="display" style="width:50%" align="center">
+        <thead>
+            <tr class="header">
+                <th>#</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Body</th>
+                
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="comen in comentarios | orderBy : 'name'">
+                <td>{{ $index + 1 }}</td>
+                <td>{{comen.name}}</td>
+                <td>{{comen.email}}</td>
+                <td>{{comen.body}}</td>
+            
+            </tr>
+            
+        </tbody>
+    </table>
+</body>
+
+</html>
